@@ -23,8 +23,10 @@ export class CheckoutComponent implements OnInit {
   }
 
   getCurrentKey() {
-    this.urlService.insert(this.url);
-    this.router.navigateByUrl(`/checkout/${this.id}`);
+    this.urlService.insert(this.url)
+    if(localStorage.getItem('userUrl')) {
+      this.router.navigateByUrl(`/checkout/${this.id}`);
+    }
   }
 
 }

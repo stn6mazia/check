@@ -26,6 +26,11 @@ const routes: Routes = [
     ]
   },
   {
+    path: '',
+    redirectTo: 'checkout/:id',
+    pathMatch: 'full'
+  },
+  {
     path: '**',
     component: NotFoundPageComponent
   }
