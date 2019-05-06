@@ -11,6 +11,11 @@ export class CheckoutPageComponent implements OnInit {
 
   userSaleInfo = userInfo
 
+  page = {
+    id: 0,
+    name: 'Checkout'
+  }
+
   creditLink = `/checkout/${sessionStorage.getItem('userUrl')}/credit`
   ticketLink = `/checkout/${sessionStorage.getItem('userUrl')}/ticket`
 
@@ -24,10 +29,14 @@ export class CheckoutPageComponent implements OnInit {
 
   goToCredit() {
     this.router.navigateByUrl(this.creditLink)
+    this.page.id = 1
+    this.page.name = 'Credito'
   }
 
   goToTicket() {
     this.router.navigateByUrl(this.ticketLink)
+    this.page.id = 2
+    this.page.name = 'Boleto'
   }
 
 

@@ -21,13 +21,7 @@ const routes: Routes = [
       },
       {
         path: 'ticket',
-        component: TicketPageComponent,
-        children: [
-          {
-            path: 'success',
-            component: TicketSuccessPageComponent
-          }
-        ]
+        component: TicketSuccessPageComponent
       }
     ]
   },

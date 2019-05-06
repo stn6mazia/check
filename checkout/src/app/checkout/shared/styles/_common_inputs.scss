@@ -5,5 +5,47 @@
     color: $default-white;
     border: none;
     border-radius: 1rem;
-    width: 100%
+    width: 100%;
+    text-align: center;
+}
+
+.btn-default:disabled {
+    background-color: $default-light-gray;
+    color: $default-gray;
+    border: none;
+    border-radius: 1rem;
+    width: 100%;
+    text-align: center;
+    cursor: not-allowed;
+}
+
+.btn-danger {
+    background-color: $default-red;
+    color: $default-white;
+    border: none;
+    border-radius: 1rem;
+    width: 100%;
+    text-align: center;
+}
+
+.default-input {
+    text-align: left;
+    color: $default-black;
+    border: none;
+    border-bottom: solid 1px $default-orange;
+    outline: none;
+}
+
+.default-input:focus {
+    outline: none;
+}
+
+.default-label {
+    text-align: left;
+    font-size: 1.2em;
+    color: $default-black;
+}
+
+.form-group {
+    text-align: left
 }

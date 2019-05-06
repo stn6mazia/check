@@ -7,7 +7,9 @@ import { CheckoutRoutingModule } from './checkout-routing.module';
 import { NotFoundPageComponent } from './shared/not-found-page/not-found-page.component';
 import { CheckoutPageComponent, CreditPageComponent, CreditSuccessPageComponent, TicketPageComponent, TicketSuccessPageComponent } from './pages';
 import { CheckoutComponent } from './checkout.component';
+import {NgxMaskModule} from 'ngx-mask'
 import { CheckoutInfoComponent } from './components';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -29,8 +31,10 @@ import { CheckoutInfoComponent } from './components';
   imports: [
     CommonModule,
     CheckoutRoutingModule,
-    AngularFireModule.initializeApp(environment.firebaseConfig),
-    AngularFireDatabaseModule
+    AngularFireDatabaseModule,
+    ReactiveFormsModule,
+    NgxMaskModule.forRoot(),
+    AngularFireModule.initializeApp(environment.firebaseConfig)
   ],
   exports: [
     CheckoutComponent

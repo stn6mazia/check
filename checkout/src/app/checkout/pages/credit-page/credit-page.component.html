@@ -1,3 +1,43 @@
-<p>
-  credit-page works!
-</p>
+<div id="credit-page" *ngIf="hasFinish == 1">
+  <router-outlet></router-outlet>
+</div>
+<div id="credit-page" *ngIf="hasFinish == 0">
+  <div class="roe">
+    <div class="col">
+      <form [formGroup]="creditForm">
+        <div class="form-group">
+          <label class="default-label">Numero do cartão</label>
+          <input [(ngModel)]="checkout.cardNumber" formControlName="carNumber" type="tel" class="form-control default-input" mask="0000-0000-0000-0000" placeholder="XXXX-XXXX-XXXX-XXXX">
+        </div>
+        <div class="form-group">
+          <label class="default-label">Nome no cartão</label>
+          <input [(ngModel)]="checkout.cardName" formControlName="cardName" type="text" class="form-control default-input" placeholder="José Silva">
+        </div>
+        <div class="row">
+          <div class="col">
+            <div class="form-group">
+              <label class="default-label">Data de venc.</label>
+              <input [(ngModel)]="checkout.cardDate" formControlName="cardDate" type="tel" class="form-control default-input" mask="00/00" placeholder="MM/AA">
+            </div>
+          </div>
+          <div class="col">
+            <div class="form-group">
+              <label class="default-label">CVV</label>
+              <input [(ngModel)]="checkout.cardCvv" formControlName="cardCvv" type="tel" class="form-control default-input" mask="000" placeholder="XXX">
+            </div>
+          </div>
+        </div>
+        <div class="btn-sect">
+          <div class="row justify-content-end">
+            <div class="col-4 no-padding">
+              <button class="btn btn-danger" (click)="cancel()">Cancelar</button>
+            </div>
+            <div class="col-4 no-padding">
+              <button [disabled]="!creditForm.valid" class="btn btn-default" (click)="checkout.paymentMethod = 'Credito'; finish(checkout)">Finalizar</button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

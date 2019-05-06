@@ -11,11 +11,15 @@ export class UrlService {
     private db: AngularFireDatabase
   ) { }
 
-  insert(url:Url) {
+  insert(url: Url) {
     this.db.list('urls').push(url)
       .then((result: any) => {
         console.log(result.key);
         sessionStorage.setItem('userUrl', result.key)
       });
+  }
+
+  delete(key: string) {
+    this.db.object(`urls/${key}`).remove();
   }
 }

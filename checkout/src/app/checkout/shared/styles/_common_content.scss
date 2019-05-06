@@ -1,12 +1,40 @@
 @import './common_colors';
 
 .wrapper {
-    padding-top: 2rem;
-    padding-bottom: 2rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
     text-align: center;
     color: $default-black;
 }
 
 .align-to-right {
+    text-align: right;
+}
+
+.align-to-left {
+    text-align: left;
+}
+
+.no-padding {
+    padding-right: 0;
+}
+
+.page-title {
+    text-align: left;
+    margin-bottom: 1rem;
+    border-bottom: 1px solid $default-orange;
+}
+
+.page-info-text {
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+}
+
+.set-black-border {
+    border-bottom: 1px solid $default-black
+}
+
+.btn-sect {
+    margin-top: 2rem;
     text-align: right;
 }
