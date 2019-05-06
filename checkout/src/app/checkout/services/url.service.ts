@@ -15,7 +15,7 @@ export class UrlService {
     this.db.list('urls').push(url)
       .then((result: any) => {
         console.log(result.key);
-        sessionStorage.setItem('userUrl', result.key)
+        localStorage.setItem('userUrl', result.key)
       });
   }
 

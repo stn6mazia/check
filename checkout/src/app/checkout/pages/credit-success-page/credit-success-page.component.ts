@@ -10,12 +10,12 @@ import { Router } from '@angular/router';
 export class CreditSuccessPageComponent implements OnInit {
 
   user = {
-    userName: sessionStorage.getItem('userName'),
-    method: sessionStorage.getItem('method'),
-    price: sessionStorage.getItem('price')
+    userName: localStorage.getItem('userName'),
+    method: localStorage.getItem('method'),
+    price: localStorage.getItem('price')
   }
 
-  order = sessionStorage.getItem('orderNumber')
+  order = localStorage.getItem('orderNumber')
 
   constructor(
     private urlService: UrlService,
@@ -26,7 +26,7 @@ export class CreditSuccessPageComponent implements OnInit {
   }
 
   finish() {
-    this.urlService.delete(sessionStorage.getItem('userUrl'));
+    this.urlService.delete(localStorage.getItem('userUrl'));
     this.router.navigateByUrl('/')
   }
 

@@ -42,11 +42,11 @@ export class CreditPageComponent implements OnInit {
 
   finish(evt: Checkout) {
     console.log(evt)
-    this.router.navigateByUrl(`/checkout/${sessionStorage.getItem('userUrl')}/credit/success`)
+    this.router.navigateByUrl(`/checkout/${localStorage.getItem('userUrl')}/credit/success`)
     this.hasFinish = 1
-    sessionStorage.setItem('userName', this.checkout.userName)
-    sessionStorage.setItem('method', this.checkout.paymentMethod)
-    sessionStorage.setItem('price', this.checkout.totalPrice)
+    localStorage.setItem('userName', this.checkout.userName)
+    localStorage.setItem('method', this.checkout.paymentMethod)
+    localStorage.setItem('price', this.checkout.totalPrice)
     this.checkService.insert(evt)
   }
 }

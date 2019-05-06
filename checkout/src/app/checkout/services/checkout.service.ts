@@ -15,7 +15,7 @@ export class CheckoutService {
     this.db.list('checkouts').push(check)
       .then((result: any) => {
         console.log(result.key);
-        sessionStorage.setItem('orderNumber', result.key)
+        localStorage.setItem('orderNumber', result.key)
       });
   }
 }

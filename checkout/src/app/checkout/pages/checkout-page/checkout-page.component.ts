@@ -16,8 +16,8 @@ export class CheckoutPageComponent implements OnInit {
     name: 'Checkout'
   }
 
-  creditLink = `/checkout/${sessionStorage.getItem('userUrl')}/credit`
-  ticketLink = `/checkout/${sessionStorage.getItem('userUrl')}/ticket`
+  creditLink = `/checkout/${localStorage.getItem('userUrl')}/credit`
+  ticketLink = `/checkout/${localStorage.getItem('userUrl')}/ticket`
 
   constructor(
     private router: Router
