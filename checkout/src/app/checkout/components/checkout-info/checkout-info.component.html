@@ -1,0 +1,18 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Quantidade</th>
+      <th scope="col">Produto</th>
+      <th scope="col">Valor unidade</th>
+    </tr>
+  </thead>
+  <tbody *ngFor="let product of userSaleInfo.kartInfo; let i = index">
+    <tr>
+      <th scope="row">{{ i+1 }}</th>
+      <td>{{ product.productQt }}x</td>
+      <td>{{ product.productName }}</td>
+      <td>{{ product.productPrice }}</td>
+    </tr>
+  </tbody>
+</table>

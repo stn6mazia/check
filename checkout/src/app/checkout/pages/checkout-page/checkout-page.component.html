@@ -1,0 +1,27 @@
+<div id="checkout-page" class="wrapper">
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <h2>Finalize sua compra {{ userSaleInfo.userName }}</h2>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <app-checkout-info></app-checkout-info>
+      </div>
+    </div>
+    <div class="row align-to-right">
+      <div class="col">
+        <h4>ValorTotal: <span>{{ userSaleInfo.totalInfo }}</span></h4>
+      </div>
+    </div>
+    <div class="row btn-sect">
+      <div class="col">
+        <button class="btn btn-default" (click)="goToCredit()">Credito</button>
+      </div>
+      <div class="col">
+        <button class="btn btn-default" (click)="goToTicket()">Boleto</button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,9 @@
+@import './common_colors';
+
+.btn-default {
+    background-color: $default-orange;
+    color: $default-white;
+    border: none;
+    border-radius: 1rem;
+    width: 100%
+}
