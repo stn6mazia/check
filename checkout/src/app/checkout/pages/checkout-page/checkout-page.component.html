@@ -1,8 +1,11 @@
 <div id="checkout-page" class="wrapper">
   <div class="container">
-    <div class="row">
-      <div class="col">
+    <div class="row bottom-line">
+      <div class="col-9 align-to-left">
         <h2 class="page-title">{{ page.name }}</h2>
+      </div>
+      <div class="col-3 align-to-right">
+        <h2 class="page-title"><i class="fas fa-store"></i></h2>
       </div>
     </div>
     <div *ngIf="page.id == 1">
@@ -12,9 +15,13 @@
       <router-outlet></router-outlet>
     </div>
     <div *ngIf="page.id == 0">
-      <div class="row">
+      <div class="row align-to-left">
         <div class="col">
-          <h6 class="page-info-text">Finalize sua compra {{ userSaleInfo.userName }}</h6>
+          <div class="user-info">
+            <div class="row">
+              <div class="col">Nome do Comprador: {{userInfo.name}}</div>
+            </div>
+          </div>
         </div>
       </div>
       <div class="row">

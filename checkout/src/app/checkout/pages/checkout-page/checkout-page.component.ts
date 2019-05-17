@@ -11,9 +11,18 @@ export class CheckoutPageComponent implements OnInit {
 
   userSaleInfo = userInfo
 
+  userInfo = {
+    name: 'Nicolas Mazia',
+    street: 'Rua dos Bobos',
+    number: '0',
+    comunity: 'Pinheiros',
+    city: 'São Paulo',
+    state: 'SP',
+  }
+
   page = {
     id: 0,
-    name: 'Checkout'
+    name: 'Company Name'
   }
 
   creditLink = `/checkout/${localStorage.getItem('userUrl')}/credit`

@@ -7,6 +7,14 @@
     color: $default-black;
 }
 
+.bottom-line {
+    border-bottom: 1px solid $default-orange;
+}
+
+.align-to-center {
+    text-align: center;
+}
+
 .align-to-right {
     text-align: right;
 }
@@ -20,9 +28,7 @@
 }
 
 .page-title {
-    text-align: left;
     margin-bottom: 1rem;
-    border-bottom: 1px solid $default-orange;
 }
 
 .page-info-text {
