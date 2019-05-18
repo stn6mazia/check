@@ -11,6 +11,8 @@ import { CheckoutService } from '../../services/checkout.service';
 })
 export class CreditPageComponent implements OnInit {
 
+  cardStep = 0
+
   hasFinish = 0
 
   checkout: Checkout
@@ -36,8 +38,21 @@ export class CreditPageComponent implements OnInit {
     this.creditForm.valueChanges.subscribe();
   }
 
+  get cardNumber() {
+    return this.creditForm.get('carNumber').value
+  }
+  get cardName() {
+    return this.creditForm.get('cardName').value
+  }
+  get cardDate() {
+    return this.creditForm.get('cardDate').value
+  }
+  get cardCvv() {
+    return this.creditForm.get('cardCvv').value
+  }
+
   cancel() {
-    this.router.navigateByUrl('/')
+    this.router.navigateByUrl(`/`)
   }
 
   finish(evt: Checkout) {
@@ -48,5 +63,17 @@ export class CreditPageComponent implements OnInit {
     localStorage.setItem('method', this.checkout.paymentMethod)
     localStorage.setItem('price', this.checkout.totalPrice)
     this.checkService.insert(evt)
+  }
+
+  cardNumberNextStep(evt) {
+    if(evt.length == 16) {
+      this.cardStep = 1
+    }
+  }
+  
+  dateNextPage(evt) {
+    if(evt.length == 4) {
+      this.cardStep = 3
+    }
   }
 }

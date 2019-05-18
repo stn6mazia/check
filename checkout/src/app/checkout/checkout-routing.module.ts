@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
 import { NotFoundPageComponent } from './shared/not-found-page/not-found-page.component';
 import { CheckoutPageComponent, CreditPageComponent, CreditSuccessPageComponent, TicketPageComponent, TicketSuccessPageComponent } from './pages';
+import { CheckoutComponent } from './checkout.component';
 
 const routes: Routes = [
   {
@@ -27,8 +28,7 @@ const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: 'checkout/:id',
-    pathMatch: 'full'
+    component: CheckoutComponent
   },
   {
     path: '**',

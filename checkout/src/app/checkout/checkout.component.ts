@@ -18,15 +18,19 @@ export class CheckoutComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.url = new Url();
     this.getCurrentKey()
   }
-
+  
   getCurrentKey() {
+    this.url = new Url();
     this.urlService.insert(this.url)
-    if(localStorage.getItem('userUrl')) {
-      this.router.navigateByUrl(`/checkout/${this.id}`);
-    }
+    setTimeout(() => {
+      if(localStorage.getItem('userUrl')) {
+        this.router.navigateByUrl(`/checkout/${localStorage.getItem('userUrl')}`);
+      } else {
+        console.log('no url')
+      }
+    }, 2000)
   }
 
 }

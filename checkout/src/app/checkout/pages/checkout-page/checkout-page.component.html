@@ -1,6 +1,6 @@
 <div id="checkout-page" class="wrapper">
   <div class="container">
-    <div class="row bottom-line">
+    <div class="row">
       <div class="col-9 align-to-left">
         <h2 class="page-title">{{ page.name }}</h2>
       </div>
@@ -15,33 +15,49 @@
       <router-outlet></router-outlet>
     </div>
     <div *ngIf="page.id == 0">
-      <div class="row align-to-left">
+      <div class="row bottom-line" (click)="showCostumerInfo = !showCostumerInfo">
+        <div class="col-9 align-to-left">
+          <h5>Informações gerais</h5>
+        </div>
+        <div class="col-3 align-to-right">
+          <i *ngIf="showCostumerInfo" class="fas fa-times"></i>
+          <i *ngIf="!showCostumerInfo" class="fas fa-plus"></i>
+        </div>
+      </div>
+      <div *ngIf="showCostumerInfo" class="row align-to-left">
         <div class="col">
           <div class="user-info">
             <div class="row">
-              <div class="col">Nome do Comprador: {{userInfo.name}}</div>
+              <div class="col-sm-12 col-md-6 align-to-left">
+                <app-user-card></app-user-card>
+              </div>
+              <div class="col-sm-12 col-md-6 align-to-left">
+                <app-store-card></app-store-card>
+              </div>
             </div>
           </div>
         </div>
       </div>
-      <div class="row">
-        <div class="col">
-          <app-checkout-info></app-checkout-info>
+      <div class="row bottom-line" (click)="showTable = !showTable">
+        <div class="col-9 align-to-left">
+          <h5>Informações de cobrança</h5>
+        </div>
+        <div class="col-3 align-to-right">
+          <i *ngIf="showTable" class="fas fa-times"></i>
+          <i *ngIf="!showTable" class="fas fa-plus"></i>
         </div>
       </div>
-      <div class="row align-to-right">
-        <div class="col">
-          <h4>ValorTotal: <span>{{ userSaleInfo.totalInfo }}</span></h4>
-        </div>
-      </div>
-      <div class="btn-sect">
-        <h6 class="page-info-text set-black-border">Como deseja pagar?</h6>
-        <div class="row justify-content-end">
-          <div class="col-4 no-padding">
-            <button class="btn btn-default" (click)="goToCredit()">Credito</button>
-          </div>
-          <div class="col-4 no-padding">
-            <button class="btn btn-default" (click)="goToTicket()">Boleto</button>
+      <div *ngIf="showTable">
+        <app-checkout-info></app-checkout-info>
+        <div class="btn-sect">
+          <h6 class="page-info-text set-black-border">Como deseja pagar?</h6>
+          <div class="row justify-content-end">
+            <div class="col-4 no-padding">
+              <button class="btn btn-default" (click)="goToCredit()">Credito</button>
+            </div>
+            <div class="col-4 no-padding">
+              <button class="btn btn-default" (click)="goToTicket()">Boleto</button>
+            </div>
           </div>
         </div>
       </div>

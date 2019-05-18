@@ -2,38 +2,148 @@
   <router-outlet></router-outlet>
 </div>
 <div id="credit-page" *ngIf="hasFinish == 0">
-  <div class="roe">
+  <div class="row">
     <div class="col">
       <form [formGroup]="creditForm">
-        <div class="form-group">
-          <label class="default-label">Numero do cartão</label>
-          <input [(ngModel)]="checkout.cardNumber" formControlName="carNumber" type="tel" class="form-control default-input" mask="0000-0000-0000-0000" placeholder="XXXX-XXXX-XXXX-XXXX">
-        </div>
-        <div class="form-group">
-          <label class="default-label">Nome no cartão</label>
-          <input [(ngModel)]="checkout.cardName" formControlName="cardName" type="text" class="form-control default-input" placeholder="José Silva">
-        </div>
-        <div class="row">
-          <div class="col">
-            <div class="form-group">
-              <label class="default-label">Data de venc.</label>
-              <input [(ngModel)]="checkout.cardDate" formControlName="cardDate" type="tel" class="form-control default-input" mask="00/00" placeholder="MM/AA">
+        <div class="card-sect">
+          <div class="card-structure">
+            <div class="container">
+              <div class="card-name align-to-left">
+                <h4>
+                  <i class="fas fa-university"></i>
+                </h4>
+              </div>
+              <div class="card-info">
+                <div class="row">
+                  <div class="col-9 align-to-left">
+                    Numero do Cartão
+                    <br>
+                    <span *ngIf="!checkout.cardNumber">
+                      XXXX-XXXX-XXXX-XXXX
+                    </span>
+                    <span *ngIf="checkout.cardNumber">
+                      {{checkout.cardNumber | mask:'0000-0000-0000-0000'}}
+                    </span>
+                  </div>
+                  <div class="col-3 align-to-right">
+                    <div class="chip">
+                      <div class="row">
+                        <div class="col colunm-line"></div>
+                        <div class="col colunm-line"></div>
+                        <div class="col colunm-line"></div>
+                        <div class="col colunm-line"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-6 align-to-left">
+                    Nome no cartão
+                    <br>
+                    <span *ngIf="!checkout.cardName">
+                      José Silva
+                    </span>
+                    <span *ngIf="checkout.cardName">
+                      {{checkout.cardName}}
+                    </span>
+                  </div>
+                  <div class="col-4 align-to-left">
+                    Data venc.
+                    <br>
+                    <span *ngIf="!checkout.cardDate">
+                      MM/AA
+                    </span>
+                    <span *ngIf="checkout.cardDate">
+                      {{checkout.cardDate | mask: '00/00'}}
+                    </span>
+                  </div>
+                  <div class="col-2 align-to-right">
+                    CVV
+                    <br>
+                    <span *ngIf="!checkout.cardCvv">
+                      XXX
+                    </span>
+                    <span *ngIf="checkout.cardCvv">
+                      {{checkout.cardCvv}}
+                    </span>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
-          <div class="col">
-            <div class="form-group">
-              <label class="default-label">CVV</label>
-              <input [(ngModel)]="checkout.cardCvv" formControlName="cardCvv" type="tel" class="form-control default-input" mask="000" placeholder="XXX">
+        </div>
+        <div class="card-number-input-page" *ngIf="cardStep == 0">
+          <div class="form-group">
+            <label class="default-label">Numero do cartão</label>
+            <input [(ngModel)]="checkout.cardNumber" formControlName="carNumber" type="tel"
+              class="form-control default-input" mask="0000-0000-0000-0000" placeholder="XXXX-XXXX-XXXX-XXXX"
+              (input)="cardNumberNextStep(checkout.cardNumber)">
+            <div class="row justify-content-end">
+              <div class="col-4 no-padding">
+                <button class="btn btn-danger" (click)="cancel()">Cancelar</button>
+              </div>
+              <div class="col-4 no-padding">
+                <button class="btn btn-default" (click)="cardStep = 1">Próximo</button>
+              </div>
             </div>
           </div>
         </div>
-        <div class="btn-sect">
-          <div class="row justify-content-end">
-            <div class="col-4 no-padding">
-              <button class="btn btn-danger" (click)="cancel()">Cancelar</button>
+        <div class="card-name-input-page" *ngIf="cardStep == 1">
+          <div class="form-group">
+            <label class="default-label">Nome no cartão</label>
+            <input [(ngModel)]="checkout.cardName" [value]="checkout.cardName.toUpperCase()" formControlName="cardName"
+              type="text" class="form-control default-input" placeholder="José Silva">
+            <div class="row justify-content-end">
+              <div class="col-4 no-padding">
+                <button class="btn btn-default" (click)="cardStep = 0">Anterior</button>
+              </div>
+              <div class="col-4 no-padding">
+                <button class="btn btn-default" (click)="cardStep = 2">Próximo</button>
+              </div>
             </div>
-            <div class="col-4 no-padding">
-              <button [disabled]="!creditForm.valid" class="btn btn-default" (click)="checkout.paymentMethod = 'Credito'; finish(checkout)">Finalizar</button>
+          </div>
+        </div>
+        <div class="card-date-input-page" *ngIf="cardStep == 2">
+          <div class="form-group">
+            <label class="default-label">Data de venc.</label>
+            <input [(ngModel)]="checkout.cardDate" formControlName="cardDate" type="tel"
+              class="form-control default-input" mask="00/00" placeholder="MM/AA"
+              (input)="dateNextPage(checkout.cardDate)">
+            <div class="row justify-content-end">
+              <div class="col-4 no-padding">
+                <button class="btn btn-default" (click)="cardStep = 1">Anterior</button>
+              </div>
+              <div class="col-4 no-padding">
+                <button class="btn btn-default" (click)="cardStep = 3">Próximo</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card-cvv-input-page" *ngIf="cardStep == 3">
+          <div class="form-group">
+            <label class="default-label">CVV</label>
+            <input [(ngModel)]="checkout.cardCvv" formControlName="cardCvv" type="tel"
+              class="form-control default-input" mask="000" placeholder="XXX">
+            <div class="row justify-content-end">
+              <div class="col-4 no-padding">
+                <button class="btn btn-default" (click)="cardStep = 2">Anterior</button>
+              </div>
+              <div class="col-4 no-padding">
+                <button class="btn btn-default" (click)="cardStep = 4">Próximo</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="finish-page" *ngIf="cardStep == 4">
+          <div class="btn-sect">
+            <div class="row justify-content-end">
+              <div class="col-4 no-padding">
+                <button class="btn btn-default" (click)="cardStep = 3">Anterior</button>
+              </div>
+              <div class="col-4 no-padding">
+                <button [disabled]="!creditForm.valid" class="btn btn-default"
+                  (click)="checkout.paymentMethod = 'Credito'; finish(checkout)">Finalizar</button>
+              </div>
             </div>
           </div>
         </div>

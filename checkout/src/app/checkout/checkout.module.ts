@@ -8,7 +8,7 @@ import { NotFoundPageComponent } from './shared/not-found-page/not-found-page.co
 import { CheckoutPageComponent, CreditPageComponent, CreditSuccessPageComponent, TicketPageComponent, TicketSuccessPageComponent } from './pages';
 import { CheckoutComponent } from './checkout.component';
 import {NgxMaskModule} from 'ngx-mask'
-import { CheckoutInfoComponent } from './components';
+import { CheckoutInfoComponent, UserCardComponent, StoreCardComponent } from './components';
 import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
@@ -24,7 +24,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     TicketSuccessPageComponent,
     /* components */
     CheckoutInfoComponent,
-
+    UserCardComponent,
+    StoreCardComponent,
     /* shared */
     NotFoundPageComponent
   ],

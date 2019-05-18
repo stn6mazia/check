@@ -9,16 +9,10 @@ import { Router } from '@angular/router';
 })
 export class CheckoutPageComponent implements OnInit {
 
-  userSaleInfo = userInfo
+  showTable = true
+  showCostumerInfo = false;
 
-  userInfo = {
-    name: 'Nicolas Mazia',
-    street: 'Rua dos Bobos',
-    number: '0',
-    comunity: 'Pinheiros',
-    city: 'São Paulo',
-    state: 'SP',
-  }
+  userSaleInfo = userInfo
 
   page = {
     id: 0,
@@ -33,7 +27,6 @@ export class CheckoutPageComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-
   }
 
   goToCredit() {
