@@ -11,6 +11,20 @@ import { masterCard, visaCard } from '../../shared/utils/utils-consts';
   styleUrls: ['./credit-page.component.scss']
 })
 export class CreditPageComponent implements OnInit {
+  totalPrice
+  one = 1
+  two = 2
+  three = 3
+  four = 4
+  five = 5
+  six = 6
+  seven = 7
+  eight = 8
+  nine = 9
+  ten = 10
+  eleve = 11
+  tweven = 12
+
   showCostumerInfo = true;
   cardBrand = ''
 
@@ -29,6 +43,8 @@ export class CreditPageComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.totalPrice = parseInt(localStorage.getItem('totalPrice'))
+
     this.checkout = new Checkout()
 
     this.creditForm = this.fb.group({
@@ -105,5 +121,9 @@ export class CreditPageComponent implements OnInit {
 
   setNextFocus(evt) {
     console.log(evt)
+  }
+
+  goToFinish() {
+    this.cardStep = 4
   }
 }

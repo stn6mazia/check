@@ -2,15 +2,25 @@
   <router-outlet></router-outlet>
 </div>
 <div id="credit-page" *ngIf="hasFinish == 0">
+  <div class="row align-to-left bottom-line">
+    <div class="col">
+      <h5>Forma de pagamento - Cartão de Crédito</h5>
+    </div>
+    <div class="col-1 align-to-right">
+      <a (click)="cancel()">
+        <i *ngIf="showCostumerInfo" class="fas fa-times"></i>
+      </a>
+    </div>
+  </div>
   <div class="row">
     <div class="col">
       <form [formGroup]="creditForm">
-        <div class="row">
-          <div class="col-sm-12 col-md-5">
+        <div class="row mobile">
+          <div class="col-sm-12">
             <app-card [cardNumber]="checkout.cardNumber" [cardName]="checkout.cardName" [cardDate]="checkout.cardDate"
               [cardCvv]="checkout.cardCvv"></app-card>
           </div>
-          <div class="col-sm-12 col-md-7">
+          <div class="col-sm-12">
             <div class="card-number-input-page input-sect" *ngIf="cardStep == 0">
               <div class="form-group">
                 <label class="default-label">Numero do cartão</label>
@@ -94,7 +104,8 @@
                 <div class="col">
                   <div class="form-group">
                     <label>Parcelas:</label>
-                    <select formControlName="formPlotsInput" class="form-control" #plotsInput (input)="getPlots(plotsInput.value)">
+                    <select formControlName="formPlotsInput" class="form-control" #plotsInput
+                      (input)="getPlots(plotsInput.value)">
                       <option selected [value]="1">Parcelar em 1x</option>
                       <option [value]="2">Parcelar em 2x</option>
                       <option [value]="3">Parcelar em 3x</option>
@@ -133,6 +144,78 @@
                       (click)="checkout.paymentMethod = 'Credito'; finish(checkout)">Finalizar</button>
                   </div>
                 </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row desktop">
+          <div class="col-md-5">
+            <app-card [cardNumber]="checkout.cardNumber" [cardName]="checkout.cardName" [cardDate]="checkout.cardDate"
+              [cardCvv]="checkout.cardCvv"></app-card>
+          </div>
+          <div class="col-md-7">
+            <div class="form-group">
+              <label class="default-label">Numero do cartão
+                <img *ngIf="cardBrand === 'master'" src="../../../../assets/image/enabled_master.png">
+                <img *ngIf="cardBrand === 'visa'" src="../../../../assets/image/enabled_visa.png">
+                <img *ngIf="cardBrand === ''" src="../../../../assets/image/disabled_master.png">
+                <img *ngIf="cardBrand === ''" src="../../../../assets/image/disabled_visa.png"></label>
+              <input [(ngModel)]="checkout.cardNumber" formControlName="carNumber" type="tel"
+                class="form-control default-input" mask="0000-0000-0000-0000" placeholder="XXXX-XXXX-XXXX-XXXX"
+                (input)="checkBrand(checkout.cardNumber); cardNumberNextStep(checkout.cardNumber)">
+            </div>
+            <div class="form-group">
+              <label class="default-label">Nome no cartão</label>
+              <input [(ngModel)]="checkout.cardName" formControlName="cardName" type="text"
+                class="form-control default-input" placeholder="José Silva" (input)="toUpperCase(checkout.cardName)">
+            </div>
+            <div class="row">
+              <div class="col">
+                <div class="form-group">
+                  <label class="default-label">Data de venc.</label>
+                  <input [(ngModel)]="checkout.cardDate" formControlName="cardDate" type="tel"
+                    class="form-control default-input" mask="00/00" placeholder="MM/AA"
+                    (input)="dateNextPage(checkout.cardDate)">
+                </div>
+              </div>
+              <div class="col">
+                <div class="form-group">
+                  <label class="default-label">CVV</label>
+                  <input [(ngModel)]="checkout.cardCvv" formControlName="cardCvv" type="tel"
+                    class="form-control default-input" mask="000" placeholder="XXX" (input)="goToFinish()">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="finish-page">
+          <div class="row desktop justify-content-end">
+            <div class="col-7">
+              <div class="form-group">
+                <label>Parcelas:</label>
+                <select formControlName="formPlotsInput" class="form-control" #plotsInput
+                  (input)="getPlots(plotsInput.value)">
+                  <option selected [value]="1">Parcelar em 1x de {{totalPrice / one}}</option>
+                  <option [value]="2">Parcelar em 2x de {{totalPrice / two}}</option>
+                  <option [value]="3">Parcelar em 3x de {{totalPrice / three}}</option>
+                  <option [value]="4">Parcelar em 4x de {{totalPrice / four}}</option>
+                  <option [value]="5">Parcelar em 5x de {{totalPrice / five}}</option>
+                  <option [value]="6">Parcelar em 6x de {{totalPrice / six}}</option>
+                  <option [value]="7">Parcelar em 7x de {{totalPrice / seven}}</option>
+                  <option [value]="8">Parcelar em 8x de {{totalPrice / eight}}</option>
+                  <option [value]="9">Parcelar em 9x de {{totalPrice / nine}}</option>
+                  <option [value]="10">Parcelar em 10x de {{totalPrice / ten}}</option>
+                  <option [value]="11">Parcelar em 11x de {{totalPrice / eleve}}</option>
+                  <option [value]="12">Parcelar em 12x de {{totalPrice / tweven}}</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="btn-sect desktop">
+            <div class="row justify-content-end buttons-sect">
+              <div class="col-4 no-padding align-to-right">
+                <button [disabled]="!creditForm.valid" class="btn btn-default"
+                  (click)="checkout.paymentMethod = 'Credito'; finish(checkout)">Finalizar</button>
               </div>
             </div>
           </div>

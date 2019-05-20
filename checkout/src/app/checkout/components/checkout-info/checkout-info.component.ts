@@ -42,6 +42,7 @@ export class CheckoutInfoComponent implements OnInit {
       })
     }
     this.subTotal = productsrice
+    localStorage.setItem('totalPrice', this.total)
     this.total = productsrice.reduce((sum, item) => sum + item.multipled, 0)
   }
 }

@@ -5,9 +5,9 @@
         <tr>
           <th scope="col">#</th>
           <th scope="col">Quantidade</th>
-          <th scope="col">Produto</th>
-          <th scope="col">Valor unidade</th>
-          <th scope="col">SubTotal</th>
+          <th scope="col">Item</th>
+          <th scope="col">Valor unitário</th>
+          <th scope="col">Subtotal</th>
         </tr>
       </thead>
       <tbody *ngFor="let product of storeCart; let i = index">
@@ -26,23 +26,23 @@
 
 <div class="row mobile info-line" *ngFor="let product of storeCart; let i = index">
   <div class="col align-to-left">
-    <p class="info-line-text"><strong>Produto:</strong> {{ product.productName }}</p>
+    <p class="info-line-text"><strong>Item:</strong> {{ product.productName }}</p>
     <p class="info-line-text"><strong>Quantidade:</strong> {{ product.unities }}x</p>
-    <p class="info-line-text"><strong>Preço por unidade:</strong> R$ {{ product.price | number: '1.2-3' }}</p>
+    <p class="info-line-text"><strong>Valor Unitário:</strong> R$ {{ product.price | number: '1.2-3' }}</p>
     <p class="info-line-text"><strong>Subtotal:</strong> R$ {{ subTotal[i].multipled | number: '1.2-3' }}</p>
   </div>
 </div>
 
 <div class="row align-to-right desktop">
   <div class="col">
-    <h4>ValorTotal: <span>R$ {{ total | number: '1.2-3'}}</span></h4>
-    <small *ngIf="plots !== '1'">ValorTotal parcelado: <span>R$ {{ total / plots | number: '1.2-3'}}</span></small>
+    <h4>Valor Total: <span>R$ {{ total | number: '1.2-3'}}</span></h4>
+    <small *ngIf="plots !== '1'">Valor Total parcelado: <span>R$ {{ total / plots | number: '1.2-3'}}</span></small>
   </div>
 </div>
 
 <div class="row align-to-left mobile">
   <div class="col">
-    <h4>ValorTotal: <span>R$ {{ total | number: '1.2-3'}}</span></h4>
+    <h4>Valor Total: <span>R$ {{ total | number: '1.2-3'}}</span></h4>
     <small *ngIf="plots !== '1'">Parcelado em {{plots}}x de: <span>R$ {{ total / plots | number: '1.2-3'}}</span></small>
   </div>
 </div>

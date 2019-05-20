@@ -1,16 +1,85 @@
 <div id="info-card">
-  <div class="row box-title">
-    <div class="col">
-      <div class="title">
-        <h4>{{ userInfo.name }}</h4>
-      </div>
-    </div>
-  </div>
   <div class="row box-info">
     <div class="col">
       <div class="info">
-        <h6>CPF: {{ userInfo.cpf }}</h6>
-        <h6>Nº do pedido: NT{{ order }}</h6>
+        <div class="row">
+          <div class="col-sm-12 col-md-4">
+            <h5>{{ userInfo.name }}</h5>
+            <h6>CPF: {{ userInfo.cpf }}</h6>
+            <h6>Nº do pedido: NT{{ order }}</h6>
+          </div>
+          <div class="col-sm-12 col-md-4">
+            <strong>Endereço de entrega</strong>
+            <h6>CEP {{userInfo.zipCode}}</h6>
+            <h6>{{userInfo.street}} - Nº {{userInfo.number}}</h6>
+            <h6>{{userInfo.comunity}} {{userInfo.city}} {{userInfo.state}}</h6>
+          </div>
+          <div class="col-sm-12 col-md-4">
+            <strong>Endereço de cobrança <a (click)="openForm = true">(editar)</a></strong>
+            <h6>CEP {{userInfo.zipCode}}</h6>
+            <h6>{{userInfo.street}} - Nº {{userInfo.number}}</h6>
+            <h6>{{userInfo.comunity}} {{userInfo.city}} {{userInfo.state}}</h6>
+          </div>
+        </div>
+        <div class="row" *ngIf="openForm">
+          <div class="col">
+            <form [formGroup]="adressForm">
+              <div class="form-group">
+                <label class="default-label">CEP</label>
+                <input [(ngModel)]="userInfo.zipCode" formControlName="zipCode" type="tel"
+                  class="form-control default-input" (input)="verifyZipCode(userInfo.zipCode)">
+              </div>
+              <div *ngIf="showMore">
+                <div class="row">
+                  <div class="col-8">
+                    <div class="form-group">
+                      <label class="default-label">Logradouro</label>
+                      <input [(ngModel)]="newInfo.logradouro" formControlName="street" type="text"
+                        class="form-control default-input">
+                    </div>
+                  </div>
+                  <div class="col-4">
+                    <div class="form-group">
+                      <label class="default-label">Número</label>
+                      <input formControlName="number" type="tel"
+                        class="form-control default-input">
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="default-label">Bairro</label>
+                  <input [(ngModel)]="newInfo.bairro" formControlName="comunity" type="tel"
+                    class="form-control default-input">
+                </div>
+                <div class="row">
+                  <div class="col">
+                    <div class="form-group">
+                      <label class="default-label">Cidade</label>
+                      <input [(ngModel)]="newInfo.localidade" formControlName="city" type="tel"
+                        class="form-control default-input">
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div class="form-group">
+                      <label class="default-label">Estado</label>
+                      <input [(ngModel)]="newInfo.uf" formControlName="state" type="tel"
+                        class="form-control default-input">
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row justify-content-end buttons-sect">
+                <div class="col-4 no-padding">
+                  <button class="btn btn-danger" (click)="openForm = false">Cancelar</button>
+                </div>
+                <div class="col-4 no-padding">
+                  <button class="btn btn-default" (click)="saveAdress()">Próximo</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+        <br>
       </div>
     </div>
   </div>

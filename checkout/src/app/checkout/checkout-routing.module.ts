@@ -8,7 +8,7 @@ import { CheckoutComponent } from './checkout.component';
 const routes: Routes = [
   {
     path: 'checkout/:id',
-    component: CreditSuccessPageComponent,
+    component: CheckoutPageComponent,
     children: [
       {
         path: 'credit',

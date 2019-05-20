@@ -37,7 +37,7 @@
       </div>
       <div class="row bottom-line" (click)="showTable = !showTable">
         <div class="col align-to-left">
-          <h5>Informações de cobrança</h5>
+          <h5>Itens do pedido</h5>
         </div>
         <div class="col-2 align-to-right">
           <i *ngIf="showTable" class="fas fa-times"></i>
@@ -46,12 +46,21 @@
       </div>
       <div *ngIf="showTable">
         <app-checkout-info></app-checkout-info>
-        <div class="btn-sect">
-          <h6 class="page-info-text set-black-border">Como deseja pagar?</h6>
-          <div class="row justify-content-end">
-            <div class="col-4 no-padding">
-              <button class="btn btn-default" (click)="goToCredit()">Credito</button>
-            </div>
+      </div>
+      <div class="align-to-left">
+        <div class="row bottom-line" (click)="showPayment = !showPayment">
+          <div class="col-9 align-to-left">
+            <h5>Formas de pagamento</h5>
+          </div>
+          <div class="col-3 align-to-right">
+            <i *ngIf="showPayment" class="fas fa-times"></i>
+            <i *ngIf="!showPayment" class="fas fa-plus"></i>
+          </div>
+        </div>
+        <br>
+        <div class="row justify-content-start" *ngIf="showPayment">
+          <div class="col-3 no-padding">
+            <button class="btn btn-default" (click)="goToCredit()"><i class="far fa-credit-card"></i> CARTÃO DE CRÉDITO</button>
           </div>
         </div>
       </div>

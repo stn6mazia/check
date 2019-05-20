@@ -11,6 +11,7 @@ export class CheckoutPageComponent implements OnInit {
 
   showTable = true
   showCostumerInfo = true;
+  showPayment = true
 
   userSaleInfo = userInfo
 
@@ -45,7 +46,7 @@ export class CheckoutPageComponent implements OnInit {
   goToCredit() {
     this.router.navigateByUrl(this.creditLink)
     this.page.id = 1
-    this.page.name = 'Credito'
+    this.page.name = 'Company Name'
   }
 
   goToTicket() {
