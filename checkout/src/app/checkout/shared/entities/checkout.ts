@@ -6,4 +6,5 @@ export class Checkout {
     cardName: string;
     cardDate: string;
     cardCvv: string;
+    plots = localStorage.getItem('plots')
 }

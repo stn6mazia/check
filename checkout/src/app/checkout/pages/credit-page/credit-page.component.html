@@ -90,6 +90,27 @@
               </div>
             </div>
             <div class="finish-page" *ngIf="cardStep == 4">
+              <div class="row">
+                <div class="col">
+                  <div class="form-group">
+                    <label>Parcelas:</label>
+                    <select formControlName="formPlotsInput" class="form-control" #plotsInput (input)="getPlots(plotsInput.value)">
+                      <option selected [value]="1">Parcelar em 1x</option>
+                      <option [value]="2">Parcelar em 2x</option>
+                      <option [value]="3">Parcelar em 3x</option>
+                      <option [value]="4">Parcelar em 4x</option>
+                      <option [value]="5">Parcelar em 5x</option>
+                      <option [value]="6">Parcelar em 6x</option>
+                      <option [value]="7">Parcelar em 7x</option>
+                      <option [value]="8">Parcelar em 8x</option>
+                      <option [value]="9">Parcelar em 9x</option>
+                      <option [value]="10">Parcelar em 10x</option>
+                      <option [value]="11">Parcelar em 11x</option>
+                      <option [value]="12">Parcelar em 12x</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
               <div class="row bottom-line" (click)="showCostumerInfo = !showCostumerInfo">
                 <div class="col-9 align-to-left">
                   <h5>Resumo da cobrança</h5>
@@ -100,7 +121,7 @@
                 </div>
               </div>
               <div *ngIf="showCostumerInfo">
-                <app-checkout-info></app-checkout-info>
+                <app-checkout-info [plots]="plotsInput.value"></app-checkout-info>
               </div>
               <div class="btn-sect">
                 <div class="row justify-content-end buttons-sect">

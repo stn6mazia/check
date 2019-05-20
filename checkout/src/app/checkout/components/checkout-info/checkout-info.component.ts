@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { userInfo } from '../../shared/utils/utils-consts';
 
 @Component({
@@ -7,6 +7,8 @@ import { userInfo } from '../../shared/utils/utils-consts';
   styleUrls: ['./checkout-info.component.scss']
 })
 export class CheckoutInfoComponent implements OnInit {
+
+  @Input() plots = '1'
 
   storeCart = [
     {
@@ -42,5 +44,4 @@ export class CheckoutInfoComponent implements OnInit {
     this.subTotal = productsrice
     this.total = productsrice.reduce((sum, item) => sum + item.multipled, 0)
   }
-
 }

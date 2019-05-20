@@ -35,7 +35,8 @@ export class CreditPageComponent implements OnInit {
       carNumber: ['', [Validators.required]],
       cardName: ['', [Validators.required]],
       cardDate: ['', [Validators.required]],
-      cardCvv: ['', [Validators.required]]
+      cardCvv: ['', [Validators.required]],
+      formPlotsInput: ['1', [Validators.required]]
     })
 
     this.creditForm.valueChanges.subscribe();
@@ -52,6 +53,10 @@ export class CreditPageComponent implements OnInit {
   }
   get cardCvv() {
     return this.creditForm.get('cardCvv').value
+  }
+  
+  get formPlotsInput() {
+    return this.creditForm.get('formPlotsInput').value
   }
 
   cancel() {
@@ -92,5 +97,13 @@ export class CreditPageComponent implements OnInit {
     } else {
       this.cardBrand = ''
     }
+  }
+
+  getPlots(evt) {
+    localStorage.setItem('plots', evt)
+  }
+
+  setNextFocus(evt) {
+    console.log(evt)
   }
 }
