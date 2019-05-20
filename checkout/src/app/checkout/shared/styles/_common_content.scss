@@ -1,5 +1,18 @@
 @import './common_colors';
 
+@media (max-width: 600px) {
+    .desktop {
+        display: none;
+    }
+}
+
+@media (min-width: 600px) {
+    .mobile {
+        display: none
+    }
+}
+
+
 .wrapper {
     padding-top: 1rem;
     padding-bottom: 1rem;
@@ -41,7 +54,7 @@
 }
 
 .btn-sect {
-    margin-top: 2rem;
+    padding-top: 2rem;
     text-align: right;
 }
 
@@ -64,4 +77,25 @@
     border: solid 1px $default-orange;
     padding: 0.5rem;
     border-bottom-left-radius: 1rem;
+}
+
+.little-text {
+    font-size: 1rem
+}
+
+.buttons-sect {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+}
+
+.info-line {
+    padding-bottom: 1rem;
+    padding-top: 1rem;
+    border-top: solid 1px $default-black;
+    border-bottom: solid 1px $default-black;
+}
+
+.info-line-text {
+    margin-top: 0.2rem;
+    margin-bottom: 0.2rem;
 }

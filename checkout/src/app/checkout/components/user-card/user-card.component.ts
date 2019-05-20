@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserCardComponent implements OnInit {
 
+  order
+
   userInfo = {
     name: 'Nicolas Mazia',
     cpf: '365.304.388-31',
@@ -20,6 +22,7 @@ export class UserCardComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    this.order = Math.floor((Math.random() * 9999999) + 1)
   }
 
 }

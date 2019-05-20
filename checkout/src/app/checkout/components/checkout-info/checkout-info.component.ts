@@ -20,6 +20,7 @@ export class CheckoutInfoComponent implements OnInit {
       unities: 3
     }
   ]
+  subTotal
 
   total
 
@@ -38,8 +39,8 @@ export class CheckoutInfoComponent implements OnInit {
         multipled: this.storeCart[i].price * this.storeCart[i].unities
       })
     }
+    this.subTotal = productsrice
     this.total = productsrice.reduce((sum, item) => sum + item.multipled, 0)
-    console.log(this.total)
   }
 
 }

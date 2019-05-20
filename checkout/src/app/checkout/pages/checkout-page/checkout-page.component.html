@@ -28,21 +28,18 @@
         <div class="col">
           <div class="user-info">
             <div class="row">
-              <div class="col-sm-12 col-md-6 align-to-left">
+              <div class="col-12 align-to-left">
                 <app-user-card></app-user-card>
-              </div>
-              <div class="col-sm-12 col-md-6 align-to-left">
-                <app-store-card></app-store-card>
               </div>
             </div>
           </div>
         </div>
       </div>
       <div class="row bottom-line" (click)="showTable = !showTable">
-        <div class="col-9 align-to-left">
+        <div class="col align-to-left">
           <h5>Informações de cobrança</h5>
         </div>
-        <div class="col-3 align-to-right">
+        <div class="col-2 align-to-right">
           <i *ngIf="showTable" class="fas fa-times"></i>
           <i *ngIf="!showTable" class="fas fa-plus"></i>
         </div>
@@ -54,9 +51,6 @@
           <div class="row justify-content-end">
             <div class="col-4 no-padding">
               <button class="btn btn-default" (click)="goToCredit()">Credito</button>
-            </div>
-            <div class="col-4 no-padding">
-              <button class="btn btn-default" (click)="goToTicket()">Boleto</button>
             </div>
           </div>
         </div>

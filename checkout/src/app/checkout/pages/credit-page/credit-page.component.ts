@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Checkout } from '../../shared/entities/checkout';
 import { CheckoutService } from '../../services/checkout.service';
+import { masterCard, visaCard } from '../../shared/utils/utils-consts';
 
 @Component({
   selector: 'app-credit-page',
@@ -10,6 +11,8 @@ import { CheckoutService } from '../../services/checkout.service';
   styleUrls: ['./credit-page.component.scss']
 })
 export class CreditPageComponent implements OnInit {
+  showCostumerInfo = true;
+  cardBrand = ''
 
   cardStep = 0
 
@@ -74,6 +77,20 @@ export class CreditPageComponent implements OnInit {
   dateNextPage(evt) {
     if(evt.length == 4) {
       this.cardStep = 3
+    }
+  }
+
+  toUpperCase(evt) {
+    this.checkout.cardName = evt.toUpperCase()
+  }
+
+  checkBrand(evt) {
+    if(evt.includes(masterCard.initCardNumber)) {
+      this.cardBrand = 'master'
+    } else if(evt.includes(visaCard.initCardNumber)) {
+      this.cardBrand = 'visa'
+    } else {
+      this.cardBrand = ''
     }
   }
 }

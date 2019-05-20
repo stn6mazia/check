@@ -1,0 +1,33 @@
+@import '../../shared/styles/mixxins';
+
+.card-sect {
+    margin-bottom: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+.card-structure {
+    border-radius: 1rem;
+    height: 12rem;
+    max-width: 23rem;;
+    background-color: $default-purple;
+    color: $default-white;
+}
+
+.card-name {
+    padding-top: 1rem;
+    height: 4rem;
+}
+
+.card-chip {
+    height: 2rem;;
+}
+
+.chip {
+    height: 2rem;
+    width: 3rem;
+    background-image: linear-gradient(rgb(158, 158, 158), rgb(180, 180, 180))
+}
+
+.colunm-line {
+    border: slid black 0.5px
+}

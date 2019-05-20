@@ -14,3 +14,13 @@ export const userInfo = {
     ],
     totalInfo: '8,00'
 }
+
+export const masterCard =  {
+    brand: 'mastercard',
+    initCardNumber: '123456'
+}
+
+export const visaCard = {
+    brand: 'visa',
+    initCardNumber: '654321'
+}
