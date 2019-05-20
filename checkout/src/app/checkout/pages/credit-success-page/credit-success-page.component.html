@@ -1,18 +1,22 @@
-<div class="row align-to-left">
-  <div class="col">
-    <h5 class="page-title">Pagamento realizado com sucesso!</h5>
-  </div>
-</div>
-<div class="row align-to-left">
-  <div class="col">
-    <h6>Parabéns {{ user.userName }}</h6>
-    <p> O Seu pedido Nº <small>{{ order }} </small>foi aprovado! </p>
-    <p> No valor de {{ user.price }} pago com {{ user.method }} </p>
-  </div>
-</div>
-<div class="row">
-  <div class="col">
-    <h6>Agora pode finalizar nosso checkout</h6>
-    <button class="btn btn-danger" (click)="finish()">Finalizar</button>
+<div id="finished">
+  <div class="container">
+    <div class="row bottom-line align-to-left">
+      <div class="col">
+        <h5 class="page-title">Pagamento realizado com sucesso!</h5>
+      </div>
+    </div>
+    <br>
+    <div class="row align-to-left">
+      <div class="col">
+        <h6>Parabéns {{ user.userName }}</h6>
+        <p> O Seu pedido Nº <small>{{ order }} </small>foi aprovado! </p>
+        <p> No valor de {{ user.price }} pago com {{ user.method }} </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <a class="btn btn-danger" href="https://www.netshoes.com.br/">Finalizar</a>
+      </div>
+    </div>
   </div>
 </div>

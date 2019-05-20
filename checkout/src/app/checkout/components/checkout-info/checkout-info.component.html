@@ -36,13 +36,13 @@
 <div class="row align-to-right desktop">
   <div class="col">
     <h4>ValorTotal: <span>R$ {{ total | number: '1.2-3'}}</span></h4>
-    <small *ngIf="plots > 1">ValorTotal parcelado: <span>R$ {{ total / plots | number: '1.2-3'}}</span></small>
+    <small *ngIf="plots !== '1'">ValorTotal parcelado: <span>R$ {{ total / plots | number: '1.2-3'}}</span></small>
   </div>
 </div>
 
 <div class="row align-to-left mobile">
   <div class="col">
     <h4>ValorTotal: <span>R$ {{ total | number: '1.2-3'}}</span></h4>
-    <small *ngIf="plots > 1">Parcelado em {{plots}}x de: <span>R$ {{ total / plots | number: '1.2-3'}}</span></small>
+    <small *ngIf="plots !== '1'">Parcelado em {{plots}}x de: <span>R$ {{ total / plots | number: '1.2-3'}}</span></small>
   </div>
 </div>
