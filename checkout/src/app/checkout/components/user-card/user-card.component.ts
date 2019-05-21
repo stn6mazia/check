@@ -18,16 +18,32 @@ export class UserCardComponent implements OnInit {
   order
 
   newInfo
-
-  userInfo = {
+  newZip
+  userInfo: any = {
     name: 'Nicolas Mazia',
     cpf: '365.304.388-31',
-    street: 'Rua dos Bobos',
-    number: '0',
-    zipCode: '04605-003',
-    comunity: 'Pinheiros',
-    city: 'São Paulo',
-    state: 'SP',
+    sendDress: [
+      {
+        street: 'Rua dos Bobos',
+        number: '0',
+        complement: '123',
+        zipCode: '04605-003',
+        comunity: 'Pinheiros',
+        city: 'São Paulo',
+        state: 'SP'
+      }
+    ],
+    paymentDress: [
+      {
+        street: 'Rua dos Bobos',
+        number: '0',
+        complement: '123',
+        zipCode: '04605-003',
+        comunity: 'Pinheiros',
+        city: 'São Paulo',
+        state: 'SP'
+      }
+    ]
   }
 
 
@@ -41,6 +57,7 @@ export class UserCardComponent implements OnInit {
       zipCode: ['', Validators.required],
       street: ['', Validators.required],
       number: ['', Validators.required],
+      complement: ['', Validators.required],
       comunity: ['', Validators.required],
       city: ['', Validators.required],
       state: ['', Validators.required],
@@ -50,11 +67,24 @@ export class UserCardComponent implements OnInit {
   }
 
   verifyZipCode(evt) {
+    this.newZip = evt
     this.http.get('https://viacep.com.br/ws/' + evt + '/json').subscribe(
-      data => {console.log('success'), this.newInfo = data, this.showMore = true},
-      error => {console.log('oops', error ), this.showMore = false}
-      
+      data => { this.newInfo = data, this.showMore = true },
+      error => { this.showMore = false }
     )
+  }
+
+  upDateUser(evt, number, complement) {
+    this.userInfo.paymentDress[0] = {
+      zipCode: this.newZip,
+      street: evt.logradouro,
+      number: number,
+      complement: complement,
+      comunity: evt.bairro,
+      city: evt.localidade,
+      state: evt.uf
+    }
+    this.openForm = false;
   }
 
 }

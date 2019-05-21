@@ -10,15 +10,18 @@
           </div>
           <div class="col-sm-12 col-md-4 user-info">
             <strong>Endereço de entrega</strong>
-            <h6>CEP {{userInfo.zipCode}}</h6>
-            <h6>{{userInfo.street}} - Nº {{userInfo.number}}</h6>
-            <h6>{{userInfo.comunity}} {{userInfo.city}} {{userInfo.state}}</h6>
+            <h6>CEP {{userInfo.sendDress[0].zipCode}}</h6>
+            <h6>{{userInfo.sendDress[0].street}} - Nº {{userInfo.sendDress[0].number}} -
+              {{userInfo.sendDress[0].complement}}</h6>
+            <h6>{{userInfo.sendDress[0].comunity}} {{userInfo.sendDress[0].city}} {{userInfo.sendDress[0].state}}</h6>
           </div>
           <div class="col-sm-12 col-md-4 user-info">
             <strong>Endereço de cobrança <a (click)="openForm = true">(editar)</a></strong>
-            <h6>CEP {{userInfo.zipCode}}</h6>
-            <h6>{{userInfo.street}} - Nº {{userInfo.number}}</h6>
-            <h6>{{userInfo.comunity}} {{userInfo.city}} {{userInfo.state}}</h6>
+            <h6>CEP {{userInfo.paymentDress[0].zipCode}}</h6>
+            <h6>{{userInfo.paymentDress[0].street}} - Nº {{userInfo.paymentDress[0].number}} -
+              {{userInfo.sendDress[0].complement}}</h6>
+            <h6>{{userInfo.paymentDress[0].comunity}} {{userInfo.paymentDress[0].city}}
+              {{userInfo.paymentDress[0].state}}</h6>
           </div>
         </div>
         <div class="row" *ngIf="openForm">
@@ -26,23 +29,26 @@
             <form [formGroup]="adressForm">
               <div class="form-group">
                 <label class="default-label">CEP</label>
-                <input [(ngModel)]="userInfo.zipCode" formControlName="zipCode" type="tel"
-                  class="form-control default-input" (input)="verifyZipCode(userInfo.zipCode)">
+                <input [(ngModel)]="userInfo.paymentDress[0].zipCode" formControlName="zipCode" type="tel"
+                  class="form-control default-input" (input)="verifyZipCode(userInfo.paymentDress[0].zipCode)">
               </div>
               <div *ngIf="showMore">
+                <div class="form-group">
+                  <label class="default-label">Logradouro</label>
+                  <input [(ngModel)]="newInfo.logradouro" formControlName="street" type="text"
+                    class="form-control default-input">
+                </div>
                 <div class="row">
-                  <div class="col-8">
-                    <div class="form-group">
-                      <label class="default-label">Logradouro</label>
-                      <input [(ngModel)]="newInfo.logradouro" formControlName="street" type="text"
-                        class="form-control default-input">
-                    </div>
-                  </div>
-                  <div class="col-4">
+                  <div class="col">
                     <div class="form-group">
                       <label class="default-label">Número</label>
-                      <input formControlName="number" type="tel"
-                        class="form-control default-input">
+                      <input [(ngModel)]="numberInput" formControlName="number" type="tel" class="form-control default-input">
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div class="form-group">
+                      <label class="default-label">Complemento</label>
+                      <input [(ngModel)]="complementInput" formControlName="complement" type="tel" class="form-control default-input">
                     </div>
                   </div>
                 </div>
@@ -73,7 +79,7 @@
                   <button class="btn btn-danger" (click)="openForm = false">Cancelar</button>
                 </div>
                 <div class="col-4 no-padding">
-                  <button class="btn btn-default" (click)="saveAdress()">Próximo</button>
+                  <button class="btn btn-default" (click)="upDateUser(newInfo, numberInput, complementInput)">Próximo</button>
                 </div>
               </div>
             </form>
