@@ -3,18 +3,18 @@
     <div class="col">
       <div class="info">
         <div class="row">
-          <div class="col-sm-12 col-md-4">
+          <div class="col-sm-12 col-md-4 user-info">
             <h5>{{ userInfo.name }}</h5>
             <h6>CPF: {{ userInfo.cpf }}</h6>
             <h6>Nº do pedido: NT{{ order }}</h6>
           </div>
-          <div class="col-sm-12 col-md-4">
+          <div class="col-sm-12 col-md-4 user-info">
             <strong>Endereço de entrega</strong>
             <h6>CEP {{userInfo.zipCode}}</h6>
             <h6>{{userInfo.street}} - Nº {{userInfo.number}}</h6>
             <h6>{{userInfo.comunity}} {{userInfo.city}} {{userInfo.state}}</h6>
           </div>
-          <div class="col-sm-12 col-md-4">
+          <div class="col-sm-12 col-md-4 user-info">
             <strong>Endereço de cobrança <a (click)="openForm = true">(editar)</a></strong>
             <h6>CEP {{userInfo.zipCode}}</h6>
             <h6>{{userInfo.street}} - Nº {{userInfo.number}}</h6>

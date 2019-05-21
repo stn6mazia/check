@@ -20,6 +20,19 @@
     color: $default-black;
 }
 
+.default-padding-top {
+    padding-top: 1rem;
+}
+.default-padding-right {
+    padding-right: 1rem;
+}
+.default-padding-bottom {
+    padding-bottom: 1rem;
+}
+.default-padding-left {
+    padding-left: 1rem;
+}
+
 .bottom-line {
     border-bottom: 1px solid $default-orange;
 }
@@ -90,6 +103,11 @@
     padding-bottom: 1rem;
     padding-top: 1rem;
     border-top: solid 1px $default-black;
+    border-bottom: solid 1px $default-black;
+}
+
+.info-line:first-child {
+    border: none;
     border-bottom: solid 1px $default-black;
 }
 
